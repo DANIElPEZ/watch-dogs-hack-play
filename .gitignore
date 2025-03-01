@@ -1,0 +1,10 @@
+.dart_tool/
+.idea/
+build/
+test/
+.flutter-plugins
+.flutter-plugins-dependencies
+.metadata
+analysis_options.yaml
+pubspec.lock
+watchdogshack.iml

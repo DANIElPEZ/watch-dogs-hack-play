@@ -1,0 +1,32 @@
+name: watchdogshack
+description: ""
+publish_to: 'none'
+version: 1.0.0
+environment:
+  sdk: ^3.6.1
+dependencies:
+  audioplayers: ^6.2.0
+  camera: ^0.11.1
+  flutter:
+    sdk: flutter
+  webview_flutter: ^4.10.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/backgrounds/
+    - assets/menu/
+    - assets/gallery/
+    - assets/boot_animation/part0/
+    - assets/boot_animation/part1/
+    - assets/sound/hack.mp3
+
+  fonts:
+    - family: OCR
+      fonts:
+        - asset: assets/font/ocr_a_extended.ttf

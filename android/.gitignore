@@ -1,0 +1,12 @@
+/.gradle
+/.kotlin
+build.gradle
+gradle.properties
+src/debug
+src/profile
+src/main/java/io
+gradlew
+gradle-wrapper.jar
+gradlew.bat
+local.properties
+watchdogshack_android.iml
