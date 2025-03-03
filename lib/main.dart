@@ -4,18 +4,20 @@ import 'package:watchdogshack/views/mainView.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(MyApp());
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
+      .then((_) {
+    runApp(MyApp());
+  });
 }
 
 class MyApp extends StatefulWidget {
-
   @override
   State<MyApp> createState() => _MyAppState();
 }
 
 class _MyAppState extends State<MyApp> {
   @override
-  void initState(){
+  void initState() {
     //startReverseTCP("192.168.0.8", 443);
     super.initState();
   }
@@ -31,9 +33,6 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: MainView()
-    );
+    return MaterialApp(debugShowCheckedModeBanner: false, home: MainView());
   }
 }

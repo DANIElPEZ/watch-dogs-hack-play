@@ -3,31 +3,48 @@ import 'package:watchdogshack/colors_and_shapes/colors.dart';
 import 'package:watchdogshack/components/buttonHacking.dart';
 import 'package:audioplayers/audioplayers.dart';
 
+//import views
+import 'package:watchdogshack/views/hacking/trafficLights.dart';
+import 'package:watchdogshack/views/hacking/blackout.dart';
+import 'package:watchdogshack/views/hacking/hack.dart';
+import 'package:watchdogshack/views/hacking/ddos.dart';
+import 'package:watchdogshack/views/hacking/hackCar.dart';
+import 'package:watchdogshack/views/hacking/sendMsg.dart';
+import 'package:watchdogshack/views/hacking/hackPhone.dart';
+
 class HomeView extends StatefulWidget {
   @override
   State<HomeView> createState() => _HomeState();
 }
 
 class _HomeState extends State<HomeView> {
-  final AudioPlayer audioPlayer=AudioPlayer();
+  final AudioPlayer audioPlayer = AudioPlayer();
   String key = 'hack lights';
-  int indexView=0;
+  int indexView = 0;
   Map<String, List> optionsHackList = {
-    'hack lights': ['HACK TRAFFIC LIGHTS', 'traffic_light'],
+    'hack lights': ['TRAFFIC LIGHTS', 'traffic_light'],
     'bck': ['BLACKOUT', 'blackout'],
-    'hack': ['HACK SYSTEM', 'hack'],
+    'hack': ['SEND VIRUS', 'hack'],
     'ddos': ['DDOS', 'hack_wifi'],
     'hack car': ['HACK CAR', 'car'],
     'send msg': ['SEND MESSAGE', 'send_msg'],
     'hack phone': ['HACK PHONE', 'phone_hack']
   };
 
-  List<Widget> views=[];
+  List<Widget> views = [
+    TrafficLights(),
+    Blackout(),
+    Virus(),
+    DDOS(),
+    Hackcar(),
+    Sendmsg(),
+    Hackphone()
+  ];
 
-  Future<void> playSound()async{
+  Future<void> playSound() async {
     try {
       await audioPlayer.play(AssetSource('sound/hack.mp3'));
-    }catch(e){
+    } catch (e) {
       print(e);
     }
   }
@@ -44,27 +61,29 @@ class _HomeState extends State<HomeView> {
           Positioned(
               top: 70,
               child: Center(
-                  child:
-                      Stack(alignment: AlignmentDirectional.center, children: [
-                        GestureDetector(
-                          onTap:(){
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=>views[indexView]));
-                          },
-                          child: Container(
-                              width: MediaQuery.of(context).size.width * 0.85,
-                              height: 300,
-                              child: Image.asset(
-                                  'assets/backgrounds/option_background.png',
-                                  height: 300,
-                                  fit: BoxFit.cover))
-                        ),
-                Text(optionsHackList[key]?[0] ?? 'no',
-                    style: TextStyle(
-                        color: ColorsPalette[2],
-                        fontFamily: 'OCR',
-                        fontWeight: FontWeight.w900,
-                        fontSize: 30))
-              ]))),
+                  child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => views[indexView]));
+                },
+                child: Stack(alignment: AlignmentDirectional.center, children: [
+                  Container(
+                      width: MediaQuery.of(context).size.width * 0.85,
+                      height: 300,
+                      child: Image.asset(
+                          'assets/backgrounds/option_background.png',
+                          height: 300,
+                          fit: BoxFit.cover)),
+                  Text(optionsHackList[key]?[0] ?? 'YOU HAVE BEEN HACKED',
+                      style: TextStyle(
+                          color: ColorsPalette[2],
+                          fontFamily: 'OCR',
+                          fontWeight: FontWeight.w900,
+                          fontSize: 30))
+                ]),
+              ))),
           Positioned(
               bottom: 30,
               child: Container(
@@ -79,15 +98,15 @@ class _HomeState extends State<HomeView> {
                         var item = optionsHackList.entries.toList()[index];
                         String img = item.value[1];
                         return GestureDetector(
-                          behavior: HitTestBehavior.opaque,
-                            onTap: () async{
+                            behavior: HitTestBehavior.opaque,
+                            onTap: () async {
                               playSound();
                               setState(() {
                                 key = item.key;
-                                indexView=index;
+                                indexView = index;
                               });
                             },
-                            child:ButtonHack(image: 'assets/menu/$img.png'));
+                            child: ButtonHack(image: 'assets/menu/$img.png'));
                       })))
         ]));
   }
