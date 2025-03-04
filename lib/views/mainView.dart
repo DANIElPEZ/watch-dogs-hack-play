@@ -41,10 +41,7 @@ class _MainViewState extends State<MainView> {
                 NavigationDestination(
                     icon: CustomPaint(
                       painter: TriangleMidOption(color: ColorsPalette[0]),
-                      child: Transform.translate(
-                        offset: Offset(0, -10),
-                        child: Icon(Icons.home, color: ColorsPalette[2], size: 40)
-                      ),
+                      child: Icon(Icons.home, color: ColorsPalette[2], size: 40)
                     ),
                     label: ''),
                 NavigationDestination(
@@ -52,11 +49,11 @@ class _MainViewState extends State<MainView> {
                       painter: LateralOption(color: ColorsPalette[1]),
                       child: Transform.translate(
                           offset: Offset(0, 10),
-                          child: Icon(Icons.search, color: ColorsPalette[2], size: 32)),
+                          child: Icon(Icons.search, color: ColorsPalette[2], size: 32))
                     ),
                     label: '')
               ])),
-      body: [GalleryView(), HomeView(), SearchView()][currentView],
+      body: [GalleryView(), HomeView(), SearchView()][currentView]
     );
   }
 }

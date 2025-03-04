@@ -11,8 +11,8 @@ class TriangleMidOption extends CustomPainter {
       ..style = PaintingStyle.fill;
 
     final path = Path();
-    path.moveTo(-15, -15);
-    path.lineTo(size.width+15, -15);
+    path.moveTo(-15, 0);
+    path.lineTo(size.width+15, 0);
     path.lineTo(size.width+45, size.height+30);
     path.lineTo(-45, size.height+30);
     path.close();

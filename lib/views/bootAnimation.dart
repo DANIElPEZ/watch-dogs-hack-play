@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:watchdogshack/colors_and_shapes/colors.dart';
-import 'package:watchdogshack/views/home.dart';
+import 'package:watchdogshack/views/mainView.dart';
 import 'dart:async';
 
 class bootAnimation extends StatefulWidget {
@@ -20,7 +20,6 @@ class stateBootAnimation extends State<bootAnimation> {
     timer=Timer.periodic(frameDuration, (timer){
       if(currentIndex<209){
         setState(()=>currentIndex++);
-        print(currentIndex);
       }else{
         timer.cancel();
         navigateMainView();
@@ -29,7 +28,7 @@ class stateBootAnimation extends State<bootAnimation> {
   }
 
   void navigateMainView(){
-    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_)=>HomeView()));
+    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_)=>MainView()));
   }
 
   @override
