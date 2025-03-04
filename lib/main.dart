@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:watchdogshack/views/mainView.dart';
+import 'package:watchdogshack/views/bootAnimation.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -33,6 +33,6 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false, home: MainView());
+    return MaterialApp(debugShowCheckedModeBanner: false, home: bootAnimation());
   }
 }

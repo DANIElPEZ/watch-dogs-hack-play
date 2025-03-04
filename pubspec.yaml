@@ -22,8 +22,7 @@ flutter:
     - assets/backgrounds/
     - assets/menu/
     - assets/gallery/
-    - assets/boot_animation/part0/
-    - assets/boot_animation/part1/
+    - assets/boot_animation/
     - assets/sound/hack.mp3
 
   fonts:

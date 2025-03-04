@@ -39,6 +39,7 @@ class stateBlackout extends State<Blackout> {
                     ElevatedButton(
                         onPressed: () async {
                           try {
+                            await audioPlayer.stop();
                             await audioPlayer
                                 .play(AssetSource('sound/hack.mp3'));
                           } catch (e) {
@@ -47,19 +48,19 @@ class stateBlackout extends State<Blackout> {
                           setState(() => stateActivationBtn = false);
 
                           int count = 0;
-                          Timer.periodic(Duration(milliseconds: 600), (timer) {
+                          Timer.periodic(Duration(milliseconds: 300), (timer) {
                             setState(() {
                               stateActivation = 1;
                             });
 
-                            Future.delayed(Duration(milliseconds: 300), () {
+                            Future.delayed(Duration(milliseconds: 200), () {
                               setState(() {
                                 stateActivation = 2;
                               });
                             });
 
                             count++;
-                            if (count >= 6) {
+                            if (count >= 7) {
                               timer.cancel();
                             }
                           });

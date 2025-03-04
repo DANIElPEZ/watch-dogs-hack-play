@@ -48,6 +48,7 @@ class stateSendmsg extends State<Sendmsg>{
                   ElevatedButton(
                       onPressed: () async {
                         try {
+                          await audioPlayer.stop();
                           await audioPlayer
                               .play(AssetSource('sound/hack.mp3'));
                         } catch (e) {

@@ -54,6 +54,7 @@ class stateVirus extends State<Virus> {
                     ElevatedButton(
                         onPressed: () async {
                           try {
+                            await audioPlayer.stop();
                             await audioPlayer
                                 .play(AssetSource('sound/hack.mp3'));
                           } catch (e) {

@@ -43,6 +43,7 @@ class _HomeState extends State<HomeView> {
 
   Future<void> playSound() async {
     try {
+      await audioPlayer.stop();
       await audioPlayer.play(AssetSource('sound/hack.mp3'));
     } catch (e) {
       print(e);
@@ -76,12 +77,18 @@ class _HomeState extends State<HomeView> {
                           'assets/backgrounds/option_background.png',
                           height: 300,
                           fit: BoxFit.cover)),
-                  Text(optionsHackList[key]?[0] ?? 'YOU HAVE BEEN HACKED',
-                      style: TextStyle(
-                          color: ColorsPalette[2],
-                          fontFamily: 'OCR',
-                          fontWeight: FontWeight.w900,
-                          fontSize: 30))
+                  DefaultTextStyle(
+                    style: TextStyle(
+                      color: ColorsPalette[2],
+                      fontFamily: 'OCR',
+                      fontWeight: FontWeight.w900,
+                      fontSize: 30,
+                    ),
+                    child: Text(
+                      optionsHackList[key]?[0] ?? 'YOU HAVE BEEN HACKED',
+                    ),
+                  )
+
                 ]),
               ))),
           Positioned(

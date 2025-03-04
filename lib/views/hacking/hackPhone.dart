@@ -53,6 +53,7 @@ class stateHackphone extends State<Hackphone>{
                       ElevatedButton(
                           onPressed: () async {
                             try {
+                              await audioPlayer.stop();
                               await audioPlayer
                                   .play(AssetSource('sound/hack.mp3'));
                             } catch (e) {
@@ -74,6 +75,7 @@ class stateHackphone extends State<Hackphone>{
                       ElevatedButton(
                           onPressed: () async {
                             try {
+                              await audioPlayer.stop();
                               await audioPlayer
                                   .play(AssetSource('sound/hack.mp3'));
                             } catch (e) {

@@ -32,6 +32,7 @@ class stateDDOS extends State<DDOS>{
                   ElevatedButton(
                       onPressed: () async {
                         try {
+                          await audioPlayer.stop();
                           await audioPlayer
                               .play(AssetSource('sound/hack.mp3'));
                         } catch (e) {
