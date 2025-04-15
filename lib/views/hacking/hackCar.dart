@@ -19,7 +19,7 @@ class stateHackcar extends State<Hackcar> {
                 color: ColorsPalette[1],
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height,
-                padding: EdgeInsets.symmetric(horizontal: 50, vertical: 60),
+                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 60),
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -27,7 +27,9 @@ class stateHackcar extends State<Hackcar> {
                           margin: EdgeInsets.only(top: 80),
                           child: Image.asset('assets/backgrounds/car.png',
                               scale: 0.6)),
-                      Row(children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
                         Icon(Icons.arrow_back_ios_sharp,
                             color: ColorsPalette[2], size: 40),
                         Column(children: [
@@ -37,7 +39,7 @@ class stateHackcar extends State<Hackcar> {
                               onPressed: () async {
                                 try {
                                   await audioPlayer
-                                      .play(AssetSource('sound/hack.mp3'));
+                                      .play(AssetSource('sound/hack_sound.mp3'));
                                 } catch (e) {
                                   print(e);
                                 }
@@ -52,14 +54,14 @@ class stateHackcar extends State<Hackcar> {
                                       color: ColorsPalette[2],
                                       fontFamily: 'OCR',
                                       fontWeight: FontWeight.w900,
-                                      fontSize: 30))),
+                                      fontSize: 35))),
                           SizedBox(height: 10),
                           ElevatedButton(
                               onPressed: () async {
                                 try {
                                   await audioPlayer.stop();
                                   await audioPlayer
-                                      .play(AssetSource('sound/hack.mp3'));
+                                      .play(AssetSource('sound/hack_sound.mp3'));
                                 } catch (e) {
                                   print(e);
                                 }
@@ -76,7 +78,7 @@ class stateHackcar extends State<Hackcar> {
                                       color: ColorsPalette[2],
                                       fontFamily: 'OCR',
                                       fontWeight: FontWeight.w900,
-                                      fontSize: 30))),
+                                      fontSize: 35))),
                           Icon(Icons.keyboard_arrow_down_sharp,
                               color: ColorsPalette[2], size: 40),
                         ]),

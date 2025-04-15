@@ -41,15 +41,6 @@ class _HomeState extends State<HomeView> {
     Hackphone()
   ];
 
-  Future<void> playSound() async {
-    try {
-      await audioPlayer.stop();
-      await audioPlayer.play(AssetSource('sound/hack.mp3'));
-    } catch (e) {
-      print(e);
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -107,7 +98,6 @@ class _HomeState extends State<HomeView> {
                         return GestureDetector(
                             behavior: HitTestBehavior.opaque,
                             onTap: () async {
-                              playSound();
                               setState(() {
                                 key = item.key;
                                 indexView = index;

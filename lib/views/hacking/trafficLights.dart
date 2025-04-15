@@ -18,7 +18,7 @@ class stateTrafficLights extends State<TrafficLights> {
             color: ColorsPalette[excute],
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
-            padding: EdgeInsets.symmetric(horizontal: 50, vertical: 60),
+            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 60),
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -38,7 +38,7 @@ class stateTrafficLights extends State<TrafficLights> {
                                 try {
                                   await audioPlayer.stop();
                                   await audioPlayer
-                                      .play(AssetSource('sound/hack.mp3'));
+                                      .play(AssetSource('sound/hack_sound.mp3'));
                                 } catch (e) {
                                   print(e);
                                 }
@@ -48,7 +48,8 @@ class stateTrafficLights extends State<TrafficLights> {
                                 setState(() => excute = 1);
                               },
                               style: ElevatedButton.styleFrom(
-                                  maximumSize: Size(600, 100),
+                                elevation: 0,
+                                  minimumSize: Size(230, 60),
                                   backgroundColor: ColorsPalette[4],
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.zero)),
@@ -57,7 +58,7 @@ class stateTrafficLights extends State<TrafficLights> {
                                       color: ColorsPalette[2],
                                       fontFamily: 'OCR',
                                       fontWeight: FontWeight.w900,
-                                      fontSize: 30))),
+                                      fontSize: 40))),
                           Icon(Icons.arrow_forward_ios_sharp,
                               color: ColorsPalette[2], size: 40)
                         ]),

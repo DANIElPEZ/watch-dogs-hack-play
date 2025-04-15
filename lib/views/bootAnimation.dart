@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:watchdogshack/colors_and_shapes/colors.dart';
-import 'package:watchdogshack/views/mainView.dart';
+import 'package:watchdogshack/views/home.dart';
 import 'dart:async';
 
 class bootAnimation extends StatefulWidget {
@@ -28,7 +28,7 @@ class stateBootAnimation extends State<bootAnimation> {
   }
 
   void navigateMainView(){
-    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_)=>MainView()));
+    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_)=>HomeView()));
   }
 
   @override

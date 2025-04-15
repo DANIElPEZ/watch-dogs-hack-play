@@ -34,23 +34,24 @@ class stateDDOS extends State<DDOS>{
                         try {
                           await audioPlayer.stop();
                           await audioPlayer
-                              .play(AssetSource('sound/hack.mp3'));
+                              .play(AssetSource('sound/hack_sound.mp3'));
                         } catch (e) {
                           print(e);
                         }
                         setState(()=>state_ddos=!state_ddos);
                       },
+                      style: ElevatedButton.styleFrom(
+                          elevation: 0,
+                          minimumSize: Size(210, 50),
+                          backgroundColor: ColorsPalette[4],
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.zero)),
                       child: Text(state_ddos?'UNACTIVATE':'ACTIVATE',
                           style: TextStyle(
                               color: ColorsPalette[2],
                               fontFamily: 'OCR',
                               fontWeight: FontWeight.w900,
-                              fontSize: 30)),
-                      style: ElevatedButton.styleFrom(
-                          elevation: 0,
-                          backgroundColor: ColorsPalette[4],
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.zero)))
+                              fontSize: 40)))
                 ]
             ))
       ),

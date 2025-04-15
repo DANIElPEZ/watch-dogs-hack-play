@@ -20,7 +20,7 @@ class stateSendmsg extends State<Sendmsg>{
             color: ColorsPalette[1],
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
-            padding: EdgeInsets.symmetric(horizontal: 50,vertical: 60),
+            padding: EdgeInsets.symmetric(horizontal: 20,vertical: 60),
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -50,22 +50,22 @@ class stateSendmsg extends State<Sendmsg>{
                         try {
                           await audioPlayer.stop();
                           await audioPlayer
-                              .play(AssetSource('sound/hack.mp3'));
+                              .play(AssetSource('sound/hack_sound.mp3'));
                         } catch (e) {
                           print(e);
                         }
                       },
+                      style: ElevatedButton.styleFrom(
+                          elevation: 0,
+                          backgroundColor: ColorsPalette[4],
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.zero)),
                       child: Text('SEND MESSAGE',
                           style: TextStyle(
                               color: ColorsPalette[2],
                               fontFamily: 'OCR',
                               fontWeight: FontWeight.w900,
-                              fontSize: 30)),
-                      style: ElevatedButton.styleFrom(
-                          elevation: 0,
-                          backgroundColor: ColorsPalette[4],
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.zero)))
+                              fontSize: 40)))
                 ]
             ))
       ),

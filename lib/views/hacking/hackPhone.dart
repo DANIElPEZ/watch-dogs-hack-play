@@ -23,13 +23,13 @@ class stateHackphone extends State<Hackphone>{
             color: ColorsPalette[1],
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
-            padding: EdgeInsets.symmetric(horizontal: 50,vertical: 60),
+            padding: EdgeInsets.symmetric(horizontal: 20,vertical: 60),
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(margin: EdgeInsets.only(top: 60),
                       child: Image.asset('assets/backgrounds/phone_hack.png',
-                      scale: 0.4)),
+                      scale: 0.5)),
                   DropdownButton(
                       dropdownColor: ColorsPalette[4],
                       value: dropDownValue,
@@ -55,44 +55,44 @@ class stateHackphone extends State<Hackphone>{
                             try {
                               await audioPlayer.stop();
                               await audioPlayer
-                                  .play(AssetSource('sound/hack.mp3'));
+                                  .play(AssetSource('sound/hack_sound.mp3'));
                             } catch (e) {
                               print(e);
                             }
                           },
+                          style: ElevatedButton.styleFrom(
+                              elevation: 0,
+                              backgroundColor: ColorsPalette[4],
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.zero)),
                           child: Text('HACK PHONE',
                               style: TextStyle(
                                   color: ColorsPalette[2],
                                   fontFamily: 'OCR',
                                   fontWeight: FontWeight.w900,
-                                  fontSize: 30)),
-                          style: ElevatedButton.styleFrom(
-                              elevation: 0,
-                              backgroundColor: ColorsPalette[4],
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.zero))),
+                                  fontSize: 35))),
                       SizedBox(height: 10),
                       ElevatedButton(
                           onPressed: () async {
                             try {
                               await audioPlayer.stop();
                               await audioPlayer
-                                  .play(AssetSource('sound/hack.mp3'));
+                                  .play(AssetSource('sound/hack_sound.mp3'));
                             } catch (e) {
                               print(e);
                             }
                           },
+                          style: ElevatedButton.styleFrom(
+                              elevation: 0,
+                              backgroundColor: ColorsPalette[4],
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.zero)),
                           child: Text('DOWNLOAD DATA',
                               style: TextStyle(
                                   color: ColorsPalette[2],
                                   fontFamily: 'OCR',
                                   fontWeight: FontWeight.w900,
-                                  fontSize: 30)),
-                          style: ElevatedButton.styleFrom(
-                              elevation: 0,
-                              backgroundColor: ColorsPalette[4],
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.zero)))
+                                  fontSize: 35)))
                     ]
                   )
                 ]

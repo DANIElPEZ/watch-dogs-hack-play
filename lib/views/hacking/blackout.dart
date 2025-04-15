@@ -36,51 +36,55 @@ class stateBlackout extends State<Blackout> {
                         child: Image.asset(
                             'assets/backgrounds/blackout$stateActivation.png',
                             scale: 0.4)),
-                    ElevatedButton(
-                        onPressed: () async {
-                          try {
-                            await audioPlayer.stop();
-                            await audioPlayer
-                                .play(AssetSource('sound/hack.mp3'));
-                          } catch (e) {
-                            print(e);
-                          }
-                          setState(() => stateActivationBtn = false);
-
-                          int count = 0;
-                          Timer.periodic(Duration(milliseconds: 300), (timer) {
-                            setState(() {
-                              stateActivation = 1;
-                            });
-
-                            Future.delayed(Duration(milliseconds: 200), () {
-                              setState(() {
-                                stateActivation = 2;
-                              });
-                            });
-
-                            count++;
-                            if (count >= 7) {
-                              timer.cancel();
+                    AnimatedOpacity(
+                      duration: Duration(milliseconds: 10),
+                      opacity: stateActivationBtn ? 1 : 0,
+                      child: ElevatedButton(
+                          onPressed: stateActivationBtn?() async {
+                            try {
+                              await audioPlayer.stop();
+                              await audioPlayer
+                                  .play(AssetSource('sound/hack_sound.mp3'));
+                            } catch (e) {
+                              print(e);
                             }
-                          });
-                        },
-                        child: Text('BLACKOUT',
-                            style: TextStyle(
-                                color: stateActivationBtn
-                                    ? ColorsPalette[2]
-                                    : ColorsPalette[1],
-                                fontFamily: 'OCR',
-                                fontWeight: FontWeight.w900,
-                                fontSize: 30)),
-                        style: ElevatedButton.styleFrom(
-                            elevation: 0,
-                            backgroundColor: stateActivationBtn
-                                ? ColorsPalette[4]
-                                : ColorsPalette[1],
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.zero)))
-                  ]))),
+                            setState(() => stateActivationBtn = false);
+
+                            int count = 0;
+                            Timer.periodic(Duration(milliseconds: 220), (timer) {
+                              setState(() {
+                                stateActivation = 1;
+                              });
+
+                              Future.delayed(Duration(milliseconds: 100), () {
+                                setState(() {
+                                  stateActivation = 2;
+                                });
+                              });
+
+                              count++;
+                              if (count >= 6) {
+                                timer.cancel();
+                              }
+                            });
+                          }:null,
+                          style: ElevatedButton.styleFrom(
+                          minimumSize: Size(280, 40),
+                              backgroundColor: stateActivationBtn
+                                  ? ColorsPalette[4]
+                                  : ColorsPalette[1],
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.zero)),
+                          child: Text('BLACKOUT',
+                              style: TextStyle(
+                                  color: stateActivationBtn
+                                      ? ColorsPalette[2]
+                                      : ColorsPalette[1],
+                                  fontFamily: 'OCR',
+                                  fontWeight: FontWeight.w900,
+                                  fontSize: 40)))
+                    )
+                  ])))
     );
   }
 }

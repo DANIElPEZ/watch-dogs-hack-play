@@ -21,9 +21,8 @@ flutter:
   assets:
     - assets/backgrounds/
     - assets/menu/
-    - assets/gallery/
     - assets/boot_animation/
-    - assets/sound/hack.mp3
+    - assets/sound/
 
   fonts:
     - family: OCR
