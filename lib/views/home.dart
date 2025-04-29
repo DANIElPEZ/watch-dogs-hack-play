@@ -21,6 +21,8 @@ class _HomeState extends State<HomeView> {
   final AudioPlayer audioPlayer = AudioPlayer();
   String key = 'hack lights';
   int indexView = 0;
+  int? pressedButtonIndex;
+
   Map<String, List> optionsHackList = {
     'hack lights': ['TRAFFIC LIGHTS', 'traffic_light'],
     'bck': ['BLACKOUT', 'blackout'],
@@ -73,14 +75,13 @@ class _HomeState extends State<HomeView> {
                       color: ColorsPalette[2],
                       fontFamily: 'OCR',
                       fontWeight: FontWeight.w900,
-                      fontSize: 30,
+                      fontSize: 30
                     ),
                     child: Text(
-                      optionsHackList[key]?[0] ?? 'YOU HAVE BEEN HACKED',
-                    ),
+                      optionsHackList[key]?[0] ?? 'YOU HAVE BEEN HACKED'
+                    )
                   )
-
-                ]),
+                ])
               ))),
           Positioned(
               bottom: 30,
@@ -95,15 +96,18 @@ class _HomeState extends State<HomeView> {
                       itemBuilder: (context, index) {
                         var item = optionsHackList.entries.toList()[index];
                         String img = item.value[1];
-                        return GestureDetector(
-                            behavior: HitTestBehavior.opaque,
-                            onTap: () async {
+                        return ButtonHack(
+                            image: 'assets/menu/$img.png',
+                            isPressed: pressedButtonIndex==index,
+                            onTap: () async{
                               setState(() {
-                                key = item.key;
-                                indexView = index;
+                                pressedButtonIndex=index;
+                                key=item.key;
+                                indexView=index;
                               });
-                            },
-                            child: ButtonHack(image: 'assets/menu/$img.png'));
+                              await Future.delayed(Duration(milliseconds: 200));
+                              setState(() =>pressedButtonIndex=null);
+                        });
                       })))
         ]));
   }
