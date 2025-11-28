@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:watchdogshack/colors_and_shapes/colors.dart';
-import 'package:watchdogshack/views/home.dart';
-import 'dart:async';
+import 'package:video_player/video_player.dart';
+import 'package:ctoshackcity/views/home.dart';
 
 class bootAnimation extends StatefulWidget {
   @override
@@ -9,44 +8,49 @@ class bootAnimation extends StatefulWidget {
 }
 
 class stateBootAnimation extends State<bootAnimation> {
-  int currentIndex=0;
-  late Timer timer;
+  late VideoPlayerController controller;
 
   @override
   void initState() {
     super.initState();
-
-    const frameDuration=Duration(milliseconds: 250);
-    timer=Timer.periodic(frameDuration, (timer){
-      if(currentIndex<209){
-        setState(()=>currentIndex++);
-      }else{
-        timer.cancel();
+    controller = VideoPlayerController.asset(
+      'assets/boot_animation/boot.mp4',
+    )..initialize().then((_) {
+        setState(() {});
+        controller.play();
+      });
+    controller.addListener(() {
+      if (controller.value.position >= controller.value.duration) {
         navigateMainView();
       }
     });
   }
 
-  void navigateMainView(){
-    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_)=>HomeView()));
+  void navigateMainView() {
+    Navigator.of(context)
+        .pushReplacement(MaterialPageRoute(builder: (_) => HomeView()));
   }
 
   @override
   void dispose() {
     super.dispose();
-    timer.cancel();
+    controller.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(child: Scaffold(
-      body: Container(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
-        color: ColorsPalette[1],
-        child: Image.asset('assets/boot_animation/${currentIndex.toString().padLeft(3,'0')}.jpg',
-        fit: BoxFit.cover),
-      )
-    ));
+    return Center(
+      child: controller.value.isInitialized
+          ? Container(
+              color: Colors.black,
+              child: Transform.scale(
+                scale: 2,
+                child: AspectRatio(
+                  aspectRatio: controller.value.aspectRatio,
+                  child: VideoPlayer(controller),
+                ),
+              ))
+          : Container(color: Colors.black),
+    );
   }
 }

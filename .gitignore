@@ -7,4 +7,4 @@ test/
 .metadata
 analysis_options.yaml
 pubspec.lock
-watchdogshack.iml
+*.iml

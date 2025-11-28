@@ -1,114 +1,144 @@
 import 'package:flutter/material.dart';
-import 'package:watchdogshack/colors_and_shapes/colors.dart';
-import 'package:watchdogshack/components/buttonHacking.dart';
-import 'package:audioplayers/audioplayers.dart';
-
-//import views
-import 'package:watchdogshack/views/hacking/trafficLights.dart';
-import 'package:watchdogshack/views/hacking/blackout.dart';
-import 'package:watchdogshack/views/hacking/hack.dart';
-import 'package:watchdogshack/views/hacking/ddos.dart';
-import 'package:watchdogshack/views/hacking/hackCar.dart';
-import 'package:watchdogshack/views/hacking/sendMsg.dart';
-import 'package:watchdogshack/views/hacking/hackPhone.dart';
+import 'package:ctoshackcity/components/buttonHacking.dart';
+import 'package:ctoshackcity/theme/colors.dart';
+import 'package:new_version_plus/new_version_plus.dart';
+import 'package:ctoshackcity/views/hacking/traffic_lights.dart';
+import 'package:ctoshackcity/views/hacking/blackout.dart';
+import 'package:ctoshackcity/views/hacking/send_virus.dart';
+import 'package:ctoshackcity/views/hacking/hack_car.dart';
+import 'package:ctoshackcity/views/hacking/vuln_system.dart';
+import 'package:ctoshackcity/views/hacking/game.dart';
 
 class HomeView extends StatefulWidget {
   @override
-  State<HomeView> createState() => _HomeState();
+  State<HomeView> createState() => _HomeViewState();
 }
 
-class _HomeState extends State<HomeView> {
-  final AudioPlayer audioPlayer = AudioPlayer();
-  String key = 'hack lights';
-  int indexView = 0;
+class _HomeViewState extends State<HomeView> {
+  int selectedIndex = 0;
   int? pressedButtonIndex;
 
-  Map<String, List> optionsHackList = {
-    'hack lights': ['TRAFFIC LIGHTS', 'traffic_light'],
-    'bck': ['BLACKOUT', 'blackout'],
-    'hack': ['SEND VIRUS', 'hack'],
-    'ddos': ['DDOS', 'hack_wifi'],
-    'hack car': ['HACK CAR', 'car'],
-    'send msg': ['SEND MESSAGE', 'send_msg'],
-    'hack phone': ['HACK PHONE', 'phone_hack']
-  };
+  List images = [
+    'traffic_light',
+    'blackout',
+    'send_virus',
+    'car',
+    'vuln',
+    'game'
+  ];
 
   List<Widget> views = [
     TrafficLights(),
     Blackout(),
     Virus(),
-    DDOS(),
     Hackcar(),
-    Sendmsg(),
-    Hackphone()
+    VulnSystem(),
+    Game()
   ];
+
+  Future<void> checkForUpdate(BuildContext context) async {
+    final newVersion = NewVersionPlus(androidId: 'com.dnv.ctos');
+    final status = await newVersion.getVersionStatus();
+    if (status != null && status.canUpdate) {
+      showDialog(
+        barrierDismissible: false,
+        context: context,
+        builder:
+            (context) => AlertDialog(
+          backgroundColor: ColorsPalette[4],
+          title: Text(
+            'New version available',
+            style: TextStyle(
+              color: Colors.white,
+              fontFamily: 'OCR',
+              fontWeight: FontWeight.w900,
+              fontSize: 24),
+          ),
+          actions: [
+            ElevatedButton(
+              onPressed: () async {
+                Navigator.pop(context);
+                await newVersion.launchAppStore(
+                  'https://play.google.com/store/apps/details?id=com.dnv.ctos',
+                );
+              },
+              child: Text(
+                'Update',
+                style: TextStyle(
+                    color: Colors.white,
+                    fontFamily: 'OCR',
+                    fontWeight: FontWeight.w900,
+                    fontSize: 20),
+              ),
+              style: ElevatedButton.styleFrom(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                backgroundColor: ColorsPalette[0],
+              ),
+            ),
+          ],
+        ),
+      );
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      checkForUpdate(context);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Container(
         height: MediaQuery.of(context).size.height,
-        child: Stack(alignment: AlignmentDirectional.center, children: [
-          Image.asset('assets/backgrounds/main_background.jpg',
-              fit: BoxFit.cover,
-              height: MediaQuery.of(context).size.height,
-              width: MediaQuery.of(context).size.width),
-          Positioned(
-              top: 70,
-              child: Center(
-                  child: GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => views[indexView]));
-                },
-                child: Stack(alignment: AlignmentDirectional.center, children: [
-                  Container(
-                      width: MediaQuery.of(context).size.width * 0.85,
-                      height: 300,
-                      child: Image.asset(
-                          'assets/backgrounds/option_background.png',
-                          height: 300,
-                          fit: BoxFit.cover)),
-                  DefaultTextStyle(
-                    style: TextStyle(
-                      color: ColorsPalette[2],
-                      fontFamily: 'OCR',
-                      fontWeight: FontWeight.w900,
-                      fontSize: 30
-                    ),
-                    child: Text(
-                      optionsHackList[key]?[0] ?? 'YOU HAVE BEEN HACKED'
-                    )
-                  )
-                ])
-              ))),
-          Positioned(
-              bottom: 30,
-              child: Container(
+        width: MediaQuery.of(context).size.width,
+        color: Colors.black,
+        child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Container(
+                width: MediaQuery.of(context).size.width,
+                height: 25,
+                color: Colors.white,
+              ),
+              Container(
+                  margin: EdgeInsets.only(top: 60),
+                  child: Image.asset('assets/backgrounds/${images[selectedIndex]}.png',
+                      scale: 0.35)),
+              Container(
                   height: 150,
                   width: MediaQuery.of(context).size.width,
                   child: ListView.builder(
-                      itemCount: optionsHackList.length,
+                      itemCount: images.length,
                       scrollDirection: Axis.horizontal,
                       padding:
                           EdgeInsets.symmetric(horizontal: 13, vertical: 7),
                       itemBuilder: (context, index) {
-                        var item = optionsHackList.entries.toList()[index];
-                        String img = item.value[1];
                         return ButtonHack(
-                            image: 'assets/menu/$img.png',
-                            isPressed: pressedButtonIndex==index,
-                            onTap: () async{
+                            image: 'assets/menu/${images[index]}.png',
+                            isPressed: pressedButtonIndex == index,
+                            onTap: () async {
                               setState(() {
-                                pressedButtonIndex=index;
-                                key=item.key;
-                                indexView=index;
+                                pressedButtonIndex = index;
                               });
                               await Future.delayed(Duration(milliseconds: 200));
-                              setState(() =>pressedButtonIndex=null);
-                        });
-                      })))
-        ]));
+                              setState(() => pressedButtonIndex = null);
+                              if (selectedIndex == index) {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => views[index]));
+                              } else {
+                                setState(() {
+                                  selectedIndex = index;
+                                });
+                              }
+                            });
+                      }))
+            ]));
   }
 }

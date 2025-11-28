@@ -1,11 +1,23 @@
-name: watchdogshack
-description: ""
+name: ctoshackcity
 publish_to: 'none'
-version: 1.0.0
+version: 1.2.0
 environment:
   sdk: ^3.6.1
 dependencies:
-  audioplayers: ^6.2.0
+  audioplayers: ^6.5.1
+  flame_tiled: ^3.0.8
+  flame: ^1.33.0
+  bloc: ^9.0.0
+  flutter_bloc: ^9.1.1
+  flutter_dotenv: ^6.0.0
+  sqflite: ^2.4.2
+  google_mobile_ads: ^6.0.0
+  new_version_plus: ^0.1.1
+  supabase_flutter: ^2.10.3
+  in_app_purchase: ^3.2.3
+  bcrypt: ^1.1.3
+  video_player: ^2.10.1
+  font_awesome_flutter: ^10.12.0
   flutter:
     sdk: flutter
 
@@ -19,8 +31,10 @@ flutter:
   assets:
     - assets/backgrounds/
     - assets/menu/
-    - assets/boot_animation/
+    - assets/boot_animation/boot.mp4
     - assets/sound/
+    - assets/game/aiden/
+    - assets/game/
 
   fonts:
     - family: OCR

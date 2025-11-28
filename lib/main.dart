@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:watchdogshack/views/bootAnimation.dart';
+import 'package:ctoshackcity/views/bootAnimation.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ctoshackcity/blocs/products/products_bloc.dart';
+import 'package:ctoshackcity/repository/purchase_repository.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -10,14 +13,29 @@ void main() {
   });
 }
 
-class MyApp extends StatefulWidget {
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false, home: bootAnimation());
+    return MultiRepositoryProvider(
+      providers: [
+        RepositoryProvider<PurchaseRepository>(
+            create: (context) => PurchaseRepository()
+        )
+      ],
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider<PurchaseBloc>(create: (context)=>PurchaseBloc(
+              purchaseRepository: RepositoryProvider.of<PurchaseRepository>(context)
+          ))
+        ],
+        child: Builder(
+          builder: (context) {
+            return MaterialApp(debugShowCheckedModeBanner: false, builder: (context, child){
+              return MediaQuery(data: MediaQuery.of(context).copyWith(textScaler: TextScaler.noScaling, boldText: false), child: SafeArea(child: child!));
+            }, home: bootAnimation());
+          }
+        ),
+      ),
+    );
   }
 }

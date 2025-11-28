@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:watchdogshack/colors_and_shapes/button_hack_shape.dart';
-import 'package:watchdogshack/colors_and_shapes/colors.dart';
+import 'package:ctoshackcity/theme/shape/button_shape.dart';
+import 'package:ctoshackcity/theme/colors.dart';
 
 class ButtonHack extends StatelessWidget{
   ButtonHack({required this.image, required this.onTap, required this.isPressed});
