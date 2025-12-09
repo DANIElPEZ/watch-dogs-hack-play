@@ -4,6 +4,7 @@ import 'package:ctoshackcity/views/bootAnimation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ctoshackcity/blocs/products/products_bloc.dart';
 import 'package:ctoshackcity/repository/purchase_repository.dart';
+import 'package:ctoshackcity/game/game.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -32,7 +33,9 @@ class MyApp extends StatelessWidget {
           builder: (context) {
             return MaterialApp(debugShowCheckedModeBanner: false, builder: (context, child){
               return MediaQuery(data: MediaQuery.of(context).copyWith(textScaler: TextScaler.noScaling, boldText: false), child: SafeArea(child: child!));
-            }, home: bootAnimation());
+            }, home: //Game()
+              bootAnimation()
+            );
           }
         ),
       ),

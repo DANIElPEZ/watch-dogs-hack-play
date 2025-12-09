@@ -9,8 +9,15 @@ class Virus extends StatefulWidget {
 }
 
 class stateVirus extends State<Virus> {
-  List<String> virusList = ['TROJAN','SPYWARE','RANSOMWARE','WORM','BOTNET'];
+  List<String> virusList = ['TROJAN','SPYWARE','RANSOMWARE','WORM'];
   String dropDownValue = 'TROJAN';
+
+  Map<String, String> images = {
+    'TROJAN':'trojan',
+    'SPYWARE': 'spyware',
+    'RANSOMWARE':'ramsonware',
+    'WORM':'worm'
+  };
 
   final ad_helper=adUtils();
 
@@ -26,34 +33,34 @@ class stateVirus extends State<Virus> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-          appBar: PreferredSize(
-              preferredSize: Size.fromHeight(25),
-              child: Container(
-                color: ColorsPalette[2],
-              )),
-          body: Container(
-              color: ColorsPalette[1],
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height,
-              padding: EdgeInsets.symmetric(horizontal: 50, vertical: 60),
-              child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                        margin: EdgeInsets.only(top: 60),
-                        child: Image.asset('assets/backgrounds/send_virus.png',
-                            scale: 0.4)),
+    return Scaffold(
+        appBar: PreferredSize(
+            preferredSize: Size.fromHeight(25),
+            child: Container(
+              color: ColorsPalette[2],
+            )),
+        body: Container(
+            color: ColorsPalette[1],
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
+            padding: EdgeInsets.symmetric(horizontal: 50, vertical: 60),
+            child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                      margin: EdgeInsets.only(top: 60),
+                      child: Image.asset('assets/backgrounds/${images[dropDownValue]}.png',
+                          scale: 0.7)),
+                  Column(children: [
                     DropdownButton(
-                      dropdownColor: ColorsPalette[4],
+                        dropdownColor: ColorsPalette[4],
                         value: dropDownValue,
                         icon: Icon(Icons.coronavirus, color: ColorsPalette[2]),
                         items: virusList
                             .map<DropdownMenuItem<String>>((String value) =>
-                                DropdownMenuItem(
-                                    value: value,
-                                    child: Text(value,
+                            DropdownMenuItem(
+                                value: value,
+                                child: Text(value,
                                     style: TextStyle(
                                         color: ColorsPalette[2],
                                         fontFamily: 'OCR',
@@ -61,8 +68,9 @@ class stateVirus extends State<Virus> {
                                         fontSize: 25)
                                 )))
                             .toList(),
-                        onChanged: (String? value) =>
-                            setState(() => dropDownValue = value!)),
+                        onChanged: (String? value) =>setState(() => dropDownValue = value!)
+                    ),
+                    SizedBox(height: 27),
                     SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
@@ -74,14 +82,14 @@ class stateVirus extends State<Virus> {
                               backgroundColor: ColorsPalette[4],
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.zero)),
-                          child: Text('SEND VIRUS',
+                          child: Text('EXECUTE',
                               style: TextStyle(
                                   color: ColorsPalette[2],
                                   fontFamily: 'OCR',
                                   fontWeight: FontWeight.w900,
                                   fontSize: 35))),
                     )
-                  ]))),
-    );
+                  ])
+                ])));
   }
 }
