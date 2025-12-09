@@ -8,6 +8,7 @@ import 'package:ctoshackcity/views/hacking/send_virus.dart';
 import 'package:ctoshackcity/views/hacking/hack_car.dart';
 import 'package:ctoshackcity/views/hacking/vuln_system.dart';
 import 'package:ctoshackcity/views/hacking/game.dart';
+import 'package:ctoshackcity/views/hacking/terminal.dart';
 //import 'package:ctoshackcity/game/game.dart';
 
 class HomeView extends StatefulWidget {
@@ -23,8 +24,9 @@ class _HomeViewState extends State<HomeView> {
     'traffic_light',
     'blackout',
     'send_virus',
-    'car',
     'vuln',
+    'terminal',
+    'car',
     'game'
   ];
 
@@ -32,8 +34,9 @@ class _HomeViewState extends State<HomeView> {
     TrafficLights(),
     Blackout(),
     Virus(),
-    Hackcar(),
     VulnSystem(),
+    Terminal(),
+    Hackcar(),
     Game()
   ];
 

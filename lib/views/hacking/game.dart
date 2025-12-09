@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:ctoshackcity/theme/colors.dart';
+import 'package:ctoshackcity/utils/replay_sound.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ctoshackcity/blocs/products/products_state.dart';
@@ -52,6 +53,7 @@ class stateHackphone extends State<Game> {
                         shape: RoundedRectangleBorder(),
                         backgroundColor: ColorsPalette[4],
                         onPressed: () async {
+                          replay_sound();
                           const projectUrl =
                               'https://github.com/DANIElPEZ/watch-dogs-hack-play';
                           final ghWebUri = Uri.parse(projectUrl);
@@ -74,6 +76,7 @@ class stateHackphone extends State<Game> {
                         shape: RoundedRectangleBorder(),
                         backgroundColor: ColorsPalette[4],
                         onPressed: () {
+                          replay_sound();
                           Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -125,6 +128,7 @@ class stateHackphone extends State<Game> {
                                           ),
                                           ElevatedButton(
                                             onPressed: () {
+                                              replay_sound();
                                               context.read<PurchaseBloc>().add(
                                                 MakeAndVerifyPurchase(
                                                     product),
