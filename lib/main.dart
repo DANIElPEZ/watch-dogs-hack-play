@@ -33,8 +33,8 @@ class MyApp extends StatelessWidget {
           builder: (context) {
             return MaterialApp(debugShowCheckedModeBanner: false, builder: (context, child){
               return MediaQuery(data: MediaQuery.of(context).copyWith(textScaler: TextScaler.noScaling, boldText: false), child: SafeArea(child: child!));
-            }, home: //Game()
-              bootAnimation()
+            }, home: Game()
+              //bootAnimation()
             );
           }
         ),
