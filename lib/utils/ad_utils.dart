@@ -8,7 +8,7 @@ class adUtils{
 
   Future<void> loadRewardedAd({required void Function() onReady}) async {
     await RewardedAd.load(
-      adUnitId: 'ca-app-pub-6288821932043902/7893871266',
+      adUnitId: 'ca-app-pub-9297813785898159/3804085033',
       request: const AdRequest(),
       rewardedAdLoadCallback: RewardedAdLoadCallback(
         onAdLoaded: (ad) {

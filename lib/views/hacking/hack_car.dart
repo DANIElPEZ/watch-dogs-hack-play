@@ -39,7 +39,7 @@ class stateHackcar extends State<Hackcar> {
                 children: [
                   Container(
                       margin: EdgeInsets.only(top: 80),
-                      child: Image.asset('assets/backgrounds/car.png',
+                      child: Image.asset('assets/app/backgrounds/car.png',
                           scale: 0.6)),
                   SizedBox(
                     width: double.infinity,

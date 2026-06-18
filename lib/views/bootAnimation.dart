@@ -14,7 +14,7 @@ class stateBootAnimation extends State<bootAnimation> {
   void initState() {
     super.initState();
     controller = VideoPlayerController.asset(
-      'assets/boot_animation/boot.mp4',
+      'assets/app/boot_animation/boot.mp4',
     )..initialize().then((_) {
         setState(() {});
         controller.play();

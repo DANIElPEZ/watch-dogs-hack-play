@@ -40,7 +40,7 @@ class stateTrafficLights extends State<TrafficLights> {
               children: [
                 Container(
                   margin: EdgeInsets.only(top: 80),
-                  child: Image.asset('assets/backgrounds/traffic_light.png',
+                  child: Image.asset('assets/app/backgrounds/traffic_light.png',
                       scale: 0.6),
                 ),
                 Column(children: [

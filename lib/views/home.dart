@@ -9,7 +9,6 @@ import 'package:ctoshackcity/views/hacking/hack_car.dart';
 import 'package:ctoshackcity/views/hacking/vuln_system.dart';
 import 'package:ctoshackcity/views/hacking/game.dart';
 import 'package:ctoshackcity/views/hacking/terminal.dart';
-//import 'package:ctoshackcity/game/game.dart';
 
 class HomeView extends StatefulWidget {
   @override
@@ -111,7 +110,7 @@ class _HomeViewState extends State<HomeView> {
               ),
               Container(
                   margin: EdgeInsets.only(top: 60),
-                  child: Image.asset('assets/backgrounds/${images[selectedIndex]}.png',
+                  child: Image.asset('assets/app/backgrounds/${images[selectedIndex]}.png',
                       scale: 0.35)),
               Container(
                   height: 150,
@@ -123,7 +122,7 @@ class _HomeViewState extends State<HomeView> {
                           EdgeInsets.symmetric(horizontal: 13, vertical: 7),
                       itemBuilder: (context, index) {
                         return ButtonHack(
-                            image: 'assets/menu/${images[index]}.png',
+                            image: 'assets/app/menu/${images[index]}.png',
                             isPressed: pressedButtonIndex == index,
                             onTap: () async {
                               setState(() {

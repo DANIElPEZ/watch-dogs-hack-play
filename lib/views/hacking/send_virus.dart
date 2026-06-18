@@ -49,7 +49,7 @@ class stateVirus extends State<Virus> {
                 children: [
                   Container(
                       margin: EdgeInsets.only(top: 60),
-                      child: Image.asset('assets/backgrounds/${images[dropDownValue]}.png',
+                      child: Image.asset('assets/app/backgrounds/${images[dropDownValue]}.png',
                           scale: 0.7)),
                   Column(children: [
                     DropdownButton(

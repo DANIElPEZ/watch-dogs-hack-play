@@ -1,6 +1,6 @@
 name: ctoshackcity
 publish_to: 'none'
-version: 1.5.0
+version: 1.6.0
 environment:
   sdk: ^3.6.1
 dependencies:
@@ -29,10 +29,10 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/backgrounds/
-    - assets/menu/
-    - assets/sound/
-    - assets/boot_animation/boot.mp4
+    - assets/app/backgrounds/
+    - assets/app/boot_animation/boot.mp4
+    - assets/app/menu/
+    - assets/app/sound/
     - assets/game/aiden/
     - assets/tiles/
     - assets/images/
@@ -40,4 +40,4 @@ flutter:
   fonts:
     - family: OCR
       fonts:
-        - asset: assets/font/ocr_a_extended.ttf
+        - asset: assets/app/font/ocr_a_extended.ttf

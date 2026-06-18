@@ -49,7 +49,7 @@ class stateBlackout extends State<Blackout> {
                                       child: Container(
                                           color: blackoutColor)))),
                           Image.asset(
-                              'assets/backgrounds/blackout-effect.png',
+                              'assets/app/backgrounds/blackout-effect.png',
                               scale: 0.35)
                         ]);
                       }),

@@ -31,7 +31,7 @@ class Terminal extends StatelessWidget{
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Image.asset('assets/backgrounds/terminal.png', scale: 0.4),
+                  Image.asset('assets/app/backgrounds/terminal.png', scale: 0.4),
                   Column(
                     children: [
                       SizedBox(

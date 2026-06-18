@@ -48,7 +48,7 @@ class stateSendmsg extends State<VulnSystem>{
               children: [
                 Container(
                     margin: EdgeInsets.only(top: 80),
-                    child: Image.asset('assets/backgrounds/${images[dropDownValue]}.png',
+                    child: Image.asset('assets/app/backgrounds/${images[dropDownValue]}.png',
                     scale: 0.8)),
                 Column(children: [DropdownButton(
                     dropdownColor: ColorsPalette[4],
